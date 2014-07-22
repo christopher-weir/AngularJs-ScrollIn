@@ -20,15 +20,15 @@ angular.module('MyApp', ['iln-scrollin']);
 ```
 ## Options:
 
-- The directive has 2 options that can be added to the tag
+The directive has 2 options that can be added to the tag
 
-### data-scroll-in-class
-- `data-scroll-in-class` will add a different class to the div over the default 'active'
+#### data-scroll-in-class
+`data-scroll-in-class` will add a different class to the div over the default 'active'
 ```html
 <div iln-scroll-in data-scroll-in-class="NEWCLASS">some content here</div>
 ```
-### data-scroll-in-offset
-- `data-scroll-in-offset` will set the percentage offset that the class will be added. Number between 0 and 1
+#### data-scroll-in-offset
+`data-scroll-in-offset` will set the percentage offset that the class will be added. Number between 0 and 1
 ```html
 <div iln-scroll-in data-scroll-in-offset="0.19">some content here</div>
 ```
