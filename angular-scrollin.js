@@ -1,10 +1,10 @@
-/*
- * ilnScrollIn
+/**
+ * Angular scrollin
  * An angularjs directive to add a class as the user scrolls down the page
  *
  *
  */
-angular.module('iln-scrollin', []).
+angular.module('angular-scrollin', []).
     directive('ilnScrollIn', [
         '$window',
         function ( $window ) {
@@ -15,8 +15,6 @@ angular.module('iln-scrollin', []).
                 var elementPositionTop      = elm[0].getBoundingClientRect().top;
                 var elementPositionOffset   = attrs.scrollInOffset || 0.75;
                 var elementPositionClass    = attrs.scrollInClass || 'active';
-
-                console.log( elementPositionOffset );
 
                 function getScrollOffsets(w) {
 
@@ -34,6 +32,7 @@ angular.module('iln-scrollin', []).
                     elm.addClass('active');
                 }
 
+                // bind scroll listner to the window
                 angular.element($window).bind("scroll", function () {
 
                     var offset = getScrollOffsets($window);
