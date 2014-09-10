@@ -19,24 +19,26 @@ angular.module('angular-scrollin', []).
                 function getScrollOffsets(w) {
 
                     // Use the specified window or the current window if no argument
-                    w = w || window;
+                    w = w || $window;
 
-                    // This works for all browsers except IE versions 8 and before
+                    //
                     if (w.pageXOffset !== null) return {
                         x: w.pageXOffset,
                         y: w.pageYOffset
                     };
                 }
 
+                // if the element is within the window bound on page load
+                // add the active class
                 if( elementPositionTop <= $window.innerHeight ){
-                    elm.addClass('active');
+                    elm.addClass( elementPositionClass );
                 }
 
                 // bind scroll listner to the window
                 angular.element($window).bind("scroll", function () {
 
                     var offset = getScrollOffsets($window);
-
+                    // as the window scrolls check the position
                     if( Math.floor( offset.y + ( $window.innerHeight * elementPositionOffset ) ) >= elementPositionTop ){
                         elm.addClass( elementPositionClass );
                     }
