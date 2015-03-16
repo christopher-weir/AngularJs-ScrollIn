@@ -4,8 +4,8 @@
  *
  *
  */
-angular.module('angular-scrollin', []).
-    directive('ilnScrollIn', [
+angular.module('angular-scrollin', [])
+    .directive('ilnScrollIn', [
         '$window',
         function ( $window ) {
         return {
@@ -16,32 +16,15 @@ angular.module('angular-scrollin', []).
                 var elementPositionOffset   = attrs.scrollInOffset || 0.75;
                 var elementPositionClass    = attrs.scrollInClass || 'active';
 
-                function getScrollOffsets(w) {
-
-                    // Use the specified window or the current window if no argument
-                    w = w || $window;
-
-                    //
-                    if (w.pageXOffset !== null) return {
-                        x: w.pageXOffset,
-                        y: w.pageYOffset
-                    };
-                }
-
-                // if the element is within the window bound on page load
-                // add the active class
-                if( elementPositionTop <= $window.innerHeight ){
-                    elm.addClass( elementPositionClass );
-                }
-
                 // bind scroll listner to the window
-                angular.element($window).bind("scroll", function () {
+                angular.element($window).bind('scroll', function () {
 
-                    var offset = getScrollOffsets($window);
-                    // as the window scrolls check the position
-                    if( Math.floor( offset.y + ( $window.innerHeight * elementPositionOffset ) ) >= elementPositionTop ){
+                    elementPositionTop      = elm[0].getBoundingClientRect().top;
+
+                    if( elementPositionTop <= $window.innerHeight * elementPositionOffset ){
                         elm.addClass( elementPositionClass );
                     }
+
                     scope.$apply();
                 });
 
